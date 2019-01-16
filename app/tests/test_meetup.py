@@ -55,6 +55,14 @@ class TestMeetup(unittest.TestCase):
         res = json.loads(response.data.decode())
         self.assertEqual(response.status_code, 200)
 
+    def test_no_meetup(self):
+        """Testing no meetup."""
+
+        response = self.client.get('/api/meetup/100')
+
+        res = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 404)
+
     def test_create_meetup(self):
         """Testing posting a meetup."""
 

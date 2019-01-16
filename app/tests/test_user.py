@@ -154,6 +154,14 @@ class TestUser(unittest.TestCase):
         res = json.loads(response.data.decode())
         self.assertEqual(response.status_code, 400)
 
+    def test_empty_fields_user_login(self):
+        """Testing user logout."""
+
+        response = self.client.get('/api/logout')
+
+        res = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+
 
 
 

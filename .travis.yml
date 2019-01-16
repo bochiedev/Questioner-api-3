@@ -1,0 +1,18 @@
+language: python
+python:
+  - "3.6"
+
+install:
+  - pip install -r requirements.txt
+
+services:
+  - postgresql
+
+before-script:
+  -psql -c 'create database questioner_test;' -U postgres
+
+script:
+  - pytest -v --cov=app
+
+after_success:
+  - coveralls

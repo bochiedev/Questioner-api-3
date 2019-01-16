@@ -1,6 +1,13 @@
 # Questioner-api-3
 
+[![Build Status](https://travis-ci.com/bochiedev/Questioner-api-3.svg?branch=develop)](https://travis-ci.com/bochiedev/Questioner-api-3) [![Coverage Status](https://coveralls.io/repos/github/bochiedev/Questioner-api-3/badge.svg?branch=develop)](https://coveralls.io/github/bochiedev/Questioner-api-3?branch=develop)
+
 This is an API for an app that allows users to view meetups and schedule for attendance as well as ask questions and comment on questions.
+
+#### Requirements
+
+- Postgres database
+
 
 #### API-endpoints
 

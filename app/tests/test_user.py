@@ -60,6 +60,26 @@ class TestUser(unittest.TestCase):
                             "password":"Confirm2@",
                             "confirm_password":"confirm_Password2@"
                             }
+        self.wrong_login_data = {
+                            'email' : "email@gmail.com",
+                            'password':"Password"
+
+                            }
+        self.login_data = {
+                            'email' : "email2@gmail.com",
+                            'password':"password2"
+
+                            }
+        self.invalid_email_data = {
+                            'email' : "email2gmail.com",
+                            'password':"password2"
+
+                            }
+        self.empty_field_data = {
+                            'email' : "",
+                            'password':"password2"
+
+                            }
 
 
     def test_register_user(self):
@@ -94,6 +114,42 @@ class TestUser(unittest.TestCase):
 
         response = self.client.post(
             '/api/accounts', data=json.dumps(self.wrong_pass_data), content_type='application/json')
+
+        res = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 400)
+
+    def test_user_login(self):
+        """Testing user login."""
+
+        response = self.client.post(
+            '/api/login', data=json.dumps(self.login_data), content_type='application/json')
+
+        res = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+
+    def test_wrong_password_user_login(self):
+        """Testing wrong password user login."""
+
+        response = self.client.post(
+            '/api/login', data=json.dumps(self.wrong_login_data), content_type='application/json')
+
+        res = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 401)
+
+    def test_invalid_email_user_login(self):
+        """Testing invalid email address user login."""
+
+        response = self.client.post(
+            '/api/login', data=json.dumps(self.invalid_email_data), content_type='application/json')
+
+        res = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 400)
+
+    def test_empty_fields_user_login(self):
+        """Testing invalid email address user login."""
+
+        response = self.client.post(
+            '/api/login', data=json.dumps(self.empty_field_data), content_type='application/json')
 
         res = json.loads(response.data.decode())
         self.assertEqual(response.status_code, 400)

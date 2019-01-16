@@ -96,6 +96,13 @@ class Database:
         cursor.execute('TRUNCATE TABLE ' + ','.join(tables) + ' CASCADE')
         connection.commit()
 
+    def delete_table_data(self, table_name):
+        connection = self.connect("bochie","jamohsize","127.0.0.1","5432","questioner")
+
+        cursor = connection.cursor()
+        cursor.execute('TRUNCATE TABLE ' + table_name + ' CASCADE')
+        connection.commit()
+
 
     def drop_tables(self):
         connection = self.connect("bochie","jamohsize","127.0.0.1","5432","questioner")
@@ -103,6 +110,15 @@ class Database:
         cursor = connection.cursor()
         for table in tables:
             cursor.execute('DROP TABLE IF EXISTS {} CASCADE'.format(table))
+
+        connection.commit()
+
+    def drop_table(self, table_name):
+        connection = self.connect("bochie","jamohsize","127.0.0.1","5432","questioner")
+
+        cursor = connection.cursor()
+
+        cursor.execute('DROP TABLE IF EXISTS {} CASCADE'.format(table_name))
 
         connection.commit()
 

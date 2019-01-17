@@ -1,5 +1,4 @@
 from app import create_app
-from instance.config import app_config
 
 app = create_app('development')
 

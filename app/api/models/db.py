@@ -157,10 +157,3 @@ class Database:
             cursor.execute(query)
 
         self.connection.commit()
-
-    def insert(self, table, data={}):
-
-        cursor = self.connection.cursor()
-        cursor.execute('INSERT INTO {}({}) VALUES ({})'.format(table,key,value))
-
-        self.connection.commit()

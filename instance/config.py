@@ -8,22 +8,22 @@ class Config:
 class DevelopmentConfig(Config):
     """Configurations for Development."""
     DEBUG = True
-    DB_USER = 'bochie'
-    DB_PASSWORD = 'jamohsize'
-    DB_HOST = '127.0.0.1'
-    DB_PORT = '5432'
-    DB_NAME = 'questioner'
+    DB_USER = os.environ.get("DB_USER")
+    DB_PASSWORD = os.environ.get("DB_PASSWORD")
+    DB_HOST = os.environ.get("DB_HOST")
+    DB_PORT = os.environ.get("DB_PORT")
+    DB_NAME = os.environ.get("DEV_DB_NAME")
 
 
 class TestingConfig(Config):
     """Configurations for Testing, with a separate test database."""
     TESTING = True
     DEBUG = True
-    DB_USER = 'bochie'
-    DB_PASSWORD = 'jamohsize'
-    DB_HOST = '127.0.0.1'
-    DB_PORT = '5432'
-    DB_NAME = 'questioner_test'
+    DB_USER = os.environ.get("DB_USER")
+    DB_PASSWORD = os.environ.get("DB_PASSWORD")
+    DB_HOST = os.environ.get("DB_HOST")
+    DB_PORT = os.environ.get("DB_PORT")
+    DB_NAME = os.environ.get("TEST_DB_NAME")
 
 
 class StagingConfig(Config):
